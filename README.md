@@ -45,7 +45,7 @@ OR
 import vueApexcharts from "./vue3-apexcharts.js" // in src folder
 Vue.createApp({
   components: {
-    apexchart: window.vueApexcharts,
+    apexchart: vueApexcharts,
   },
   data() {
     return {
