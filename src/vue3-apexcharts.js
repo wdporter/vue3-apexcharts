@@ -297,3 +297,5 @@ const vueApexcharts = defineComponent({
   }
 });
 
+export default vueApexcharts;
+
