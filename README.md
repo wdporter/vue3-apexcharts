@@ -16,6 +16,12 @@
 
 ## Download and Installation
 
+##### Installing via a script element
+
+```html
+<script src="src/vue3-apexcharts.js"></script>
+```
+
 ##### Installing via npm
 
 ```bash
