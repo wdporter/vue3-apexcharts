@@ -23,7 +23,7 @@
   <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
 </div>
 
-<script src="./src/vue3-apexcharts.js"></script>
+<script src="./src/vue3-apexcharts-browser.js"></script>
 
 <script>
 Vue.createApp({
