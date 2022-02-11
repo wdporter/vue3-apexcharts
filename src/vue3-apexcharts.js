@@ -1,4 +1,17 @@
 /* eslint-disable */
+import {
+  h,
+  defineComponent,
+  ref,
+  getCurrentInstance,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+  onBeforeMount,
+  nextTick,
+  toRefs
+} from "vue";
+import ApexCharts from "apexcharts";
 
 // define all emitted events in order to better
 // document how the component should work
@@ -23,7 +36,7 @@ const events = [
   "brushScrolled"
 ];
 
-const vueApexcharts = Vue.defineComponent({
+const vueApexcharts = defineComponent({
   name: "apexchart",
   props: {
     options: {
@@ -48,8 +61,8 @@ const vueApexcharts = Vue.defineComponent({
   emits: events,
 
   setup(props, { emit }) {
-    const __el = Vue.ref(null);
-    const chart = Vue.ref(null);
+    const __el = ref(null);
+    const chart = ref(null);
 
     const isObject = item => {
       return item && typeof item === "object" && !Array.isArray(item) && item != null;
@@ -102,7 +115,7 @@ const vueApexcharts = Vue.defineComponent({
     };
 
     const init = async () => {
-      await Vue.nextTick();
+      await nextTick();
 
       const newOptions = {
         chart: {
@@ -203,24 +216,24 @@ const vueApexcharts = Vue.defineComponent({
       chart.value.clearAnnotations();
     };
 
-    Vue.onBeforeMount(() => {
+    onBeforeMount(() => {
       window.ApexCharts = ApexCharts;
     });
 
-    Vue.onMounted(() => {
-      __el.value = Vue.getCurrentInstance().proxy.$el;
+    onMounted(() => {
+      __el.value = getCurrentInstance().proxy.$el;
       init();
     });
 
-    Vue.onBeforeUnmount(() => {
+    onBeforeUnmount(() => {
       if (!chart.value) {
         return;
       }
       destroy();
     });
 
-    const reactiveProps = Vue.toRefs(props);
-    Vue.watch(reactiveProps.options, () => {
+    const reactiveProps = toRefs(props);
+    watch(reactiveProps.options, () => {
       if (!chart.value && props.options) {
         init();
       } else {
@@ -228,7 +241,7 @@ const vueApexcharts = Vue.defineComponent({
       }
     });
 
-    Vue.watch(
+    watch(
       reactiveProps.series,
       () => {
         if (!chart.value && props.series) {
@@ -240,15 +253,15 @@ const vueApexcharts = Vue.defineComponent({
       { deep: true }
     );
 
-    Vue.watch(reactiveProps.type, () => {
+    watch(reactiveProps.type, () => {
       refresh();
     });
 
-    Vue.watch(reactiveProps.width, () => {
+    watch(reactiveProps.width, () => {
       refresh();
     });
 
-    Vue.watch(reactiveProps.height, () => {
+    watch(reactiveProps.height, () => {
       refresh();
     });
 
@@ -278,9 +291,10 @@ const vueApexcharts = Vue.defineComponent({
   },
 
   render() {
-    return Vue.h("div", {
+    return h("div", {
       class: "vue-apexcharts"
     });
   }
 });
 
+export default vueApexcharts;
