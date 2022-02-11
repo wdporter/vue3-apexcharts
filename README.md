@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     data() {
       return {
-        … and so forth  
+        // … and so forth  
       }
     }
   }).mount("#chart")
@@ -49,7 +49,7 @@ Vue.createApp({
   },
   data() {
     return {
-      … and so forth  
+      // … and so forth  
     }
   }
 }).mount("#chart")
