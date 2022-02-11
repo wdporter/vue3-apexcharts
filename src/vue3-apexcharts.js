@@ -1,17 +1,17 @@
 /* eslint-disable */
-import {
-  h,
-  defineComponent,
-  ref,
-  getCurrentInstance,
-  onMounted,
-  onBeforeUnmount,
-  watch,
-  onBeforeMount,
-  nextTick,
-  toRefs
-} from "vue";
-import ApexCharts from "apexcharts";
+
+const h = Vue.h
+const defineComponent = Vue.defineComponent
+const ref = Vue.ref
+const getCurrentInstance = Vue.getCurrentInstance
+const onMounted = Vue.onMounted
+const onBeforeUnmount = Vue.onBeforeUnmount
+const watch = Vue.watch
+const onBeforeMount = Vue.onBeforeUnmount
+const nextTick = Vue.nextTick
+const toRefs = Vue.toRefs
+
+
 
 // define all emitted events in order to better
 // document how the component should work
@@ -297,4 +297,3 @@ const vueApexcharts = defineComponent({
   }
 });
 
-export default vueApexcharts;
