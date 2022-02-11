@@ -19,20 +19,44 @@
 ##### Installing via a script element
 
 ```html
-<script src="src/vue3-apexcharts.js"></script>
+<script type="module">
+  import vueApexcharts from "./vue3-apexcharts.js" // in src folder
+  window.vueApexcharts = vueApexcharts
+</script>
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  Vue.createApp({
+    components: {
+      apexchart: window.vueApexcharts,
+    },
+    data() {
+      return {
+        … and so forth  
+      }
+    }
+  }).mount("#chart")
+})
+</script>
+```
+
+OR
+```html
+<script type="module">
+import vueApexcharts from "./vue3-apexcharts.js" // in src folder
 Vue.createApp({
-	components: {
-		apexchart: vueApexcharts,
-	},
-	data() {
-		return {
-			… and so forth  
-		}
-	}
+  components: {
+    apexchart: window.vueApexcharts,
+  },
+  data() {
+    return {
+      … and so forth  
+    }
+  }
 }).mount("#chart")
 </script>
 ```
+
+
 
 ##### Installing via npm
 
