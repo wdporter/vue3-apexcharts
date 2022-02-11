@@ -20,6 +20,14 @@
 
 ```html
 <script src="src/vue3-apexcharts.js"></script>
+<script >
+  Vue.createApp({
+    components: {
+      apexchart: vueApexcharts,
+   },
+	data() {
+	  return {
+      … and so forth  
 ```
 
 ##### Installing via npm
